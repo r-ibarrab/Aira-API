@@ -23,6 +23,11 @@ app.get("/",(req,res)=>{
 
 io.on('connection', function(socket) {
     console.log('A user connected');
+
+    function sendInfo(message){
+        socket.broadcast.emit("order_taken",message);
+        console.log("Emitiendo mensaje");
+    }
  
     //Whenever someone disconnects this piece of code executed
     socket.on('disconnect', function () {
@@ -31,7 +36,10 @@ io.on('connection', function(socket) {
 
     socket.on("order",(message)=>{
         console.log(message);
+        sendInfo(message);
     })
+
+
  });
 
 
