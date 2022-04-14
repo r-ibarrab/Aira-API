@@ -1,0 +1,15 @@
+{
+  "name": "aira-api",
+  "version": "1.0.0",
+  "description": "API Rest to connect our drone to our webpage",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Roberto Ibarra <r.ibarrabernal@outlook.com>",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3",
+    "morgan": "^1.10.0"
+  }
+}
