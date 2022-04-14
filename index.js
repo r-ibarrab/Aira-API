@@ -2,6 +2,7 @@ const morgan = require("morgan");
 const path = require("path");
 const socketIO = require('socket.io');
 const http = require('http')
+require("dotenv/config")
 
 const express = require("express");
 const app = express();
@@ -50,6 +51,6 @@ io.on('connection', function(socket) {
 // Routes
 
 
-server.listen(3000,()=>{
+server.listen(process.env.PORT,()=>{
     console.log("all good");
 });
