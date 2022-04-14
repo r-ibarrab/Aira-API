@@ -4,12 +4,16 @@
   "description": "API Rest to connect our drone to our webpage",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "author": "Roberto Ibarra <r.ibarrabernal@outlook.com>",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.3",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.15",
+    "socket.io": "^4.4.1"
   }
 }

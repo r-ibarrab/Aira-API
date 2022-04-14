@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>Aira Pedidos</h1>
+
+    <form id="orderForm" name="orderForm">
+        <label for="studentId">Matricula:</label><br>
+        <input type="text" name="studentId"><br>
+        <label for="building">Edificio:</label><br>
+        <select name="building" id="building" form="orderForm">
+            <option value="CEID">CEID</option>
+        </select><br>
+        <label for="order">Orden:</label><br>
+        <textarea id="order" name="order" rows="5" cols="33"></textarea>
+    </form>
+
+    <button onclick="sendForm()">Hola</button>
+    
+        
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket=io();
+        // make connection with server from user side
+        socket.on('connect', function(){
+        console.log('Connected to Server')
+        });
+
+        function getFormData(){
+            const orderform = document.getElementById("orderForm");
+            const OrderData = new FormData(orderform);
+            const order = {
+                studentId: OrderData.get("studentId"),
+                building: OrderData.get("building"),
+                order: OrderData.get("order")
+            }
+            return order;
+        }
+
+        function sendForm(){
+            const data = getFormData()
+            socket.emit('order', data);
+            document.orderForm.reset();
+        }
+    </script>
+</body>
+</html>
