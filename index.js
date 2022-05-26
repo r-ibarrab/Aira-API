@@ -13,13 +13,7 @@ let io = socketIO(server)
 // Middlewares
 app.use(morgan("dev"))
 app.use(express.json());
-app.use('/statics', express.static(path.join(__dirname, 'statics')))
 
-
-// Routes
-app.get("/",(req,res)=>{
-    res.sendFile(path.join(__dirname,"statics/index.html"))
-});
 
 
 io.on('connection', function(socket) {
@@ -27,7 +21,7 @@ io.on('connection', function(socket) {
 
     function sendInfo(message){
         socket.broadcast.emit("order_taken",message);
-        console.log("Emitiendo mensaje");
+        console.log("Mensaje emitido");
     }
  
     //Whenever someone disconnects this piece of code executed
@@ -35,7 +29,7 @@ io.on('connection', function(socket) {
        console.log('A user disconnected');
     });
 
-    socket.on("order",(message)=>{
+    socket.on("plantData",(message)=>{
         console.log(message);
         sendInfo(message);
     })
