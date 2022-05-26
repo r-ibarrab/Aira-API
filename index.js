@@ -14,13 +14,11 @@ let io = socketIO(server)
 app.use(morgan("dev"))
 app.use(express.json());
 
-
-
 io.on('connection', function(socket) {
     console.log('A user connected');
 
     function sendInfo(message){
-        socket.broadcast.emit("order_taken",message);
+        socket.broadcast.emit("plantDataWeb",message);
         console.log("Mensaje emitido");
     }
  
@@ -36,13 +34,6 @@ io.on('connection', function(socket) {
 
 
  });
-
-
-
-
-
-
-// Routes
 
 
 server.listen(process.env.PORT,()=>{
