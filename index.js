@@ -14,6 +14,10 @@ let io = socketIO(server)
 app.use(morgan("dev"))
 app.use(express.json());
 
+// app.get("/",(req,res)=>{
+//     res.sendFile(path.join(__dirname,"index.html"));
+// })
+
 io.on('connection', function(socket) {
     console.log('A user connected');
 

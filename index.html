@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Giardino</title>
+</head>
+<body>
+    <main>
+        <h1>Giardino's Data</h1>
+        <section class="plantdata">
+            <div class="property">
+                <img src="images/984585.png" alt="">
+                <div class="property-text">
+                    <h2 class="label" >Luz solar</h2>
+                    <h2 class="data" id="luz">5%</h2>
+                </div>
+            </div>
+            <div class="property">
+                <img src="images/Climate-Temperature-PNG-HD-Quality.png" alt="">
+            <div class="property-text">
+                    <h2 class="label" >Luz solar</h2>                    
+                    <h2 class="data" id="temp">5%</h2>
+
+                </div>
+            </div>
+            <div class="property">
+                <img src="images/e.png" alt="">
+
+                <div class="property-text">
+                    <h2 class="label" >Luz solar</h2>
+                    <h2 class="data" id="soil">5%</h2>
+                </div>
+            </div>
+            <div class="property">
+                <img src="images/s.png" alt="">
+                <div class="property-text">
+                    <h2 class="label" >Luz solar</h2>
+
+                    <h2 class="data" id="humidity">5%</h2>
+                </div>
+                
+            </div>
+            <div class="property">
+                <img src="images/balde.png" alt="">
+                <div class="property-text">
+                    <h2 class="label" >Luz solar</h2>
+                    <h2 class="data" id="balde">5%</h2>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+        
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket=io();
+        // make connection with server from user side
+        socket.on('connect', function(){
+            console.log('Connected to Server')
+        });
+
+        socket.on('plantDataWeb', function(data){
+            document.getElementById("luz").innerHTML = data.light;
+            document.getElementById("temp").innerHTML = data.temperature;
+            document.getElementById("soil").innerHTML = data.soilHumidity;
+            document.getElementById("humidity").innerHTML = data.humidity;
+            document.getElementById("balde").innerHTML = data.water;
+
+        });
+
+
+       
+    </script>
+</body>
+</html>
