@@ -13,9 +13,10 @@ let io = socketIO(server)
 // Middlewares
 app.use(morgan("dev"))
 app.use(express.json());
+app.use(express.static(path.join(__dirname,"public")))
 
 app.get("/",(req,res)=>{
-    res.sendFile(path.join(__dirname,"index.html"));
+    res.sendFile(path.join(__dirname,"public/index.html"));
 })
 
 io.on('connection', function(socket) {

@@ -10,19 +10,22 @@
 <body>
     <main>
         <h1>Giardino's Data</h1>
+        <div id="disconnected">
+            Plant is not connected
+        </div>
         <section class="plantdata">
             <div class="property">
                 <img src="images/984585.png" alt="">
                 <div class="property-text">
                     <h2 class="label" >Luz solar</h2>
-                    <h2 class="data" id="luz">5%</h2>
+                    <h2 class="data" id="luz"></h2>
                 </div>
             </div>
             <div class="property">
                 <img src="images/Climate-Temperature-PNG-HD-Quality.png" alt="">
             <div class="property-text">
                     <h2 class="label" >Luz solar</h2>                    
-                    <h2 class="data" id="temp">5%</h2>
+                    <h2 class="data" id="temp"></h2>
 
                 </div>
             </div>
@@ -31,7 +34,7 @@
 
                 <div class="property-text">
                     <h2 class="label" >Luz solar</h2>
-                    <h2 class="data" id="soil">5%</h2>
+                    <h2 class="data" id="soil"></h2>
                 </div>
             </div>
             <div class="property">
@@ -39,7 +42,7 @@
                 <div class="property-text">
                     <h2 class="label" >Luz solar</h2>
 
-                    <h2 class="data" id="humidity">5%</h2>
+                    <h2 class="data" id="humidity"></h2>
                 </div>
                 
             </div>
@@ -47,22 +50,29 @@
                 <img src="images/balde.png" alt="">
                 <div class="property-text">
                     <h2 class="label" >Luz solar</h2>
-                    <h2 class="data" id="balde">5%</h2>
+                    <h2 class="data" id="balde"></h2>
 
                 </div>
             </div>
+           
         </section>
 
     </main>
         
     <script src="/socket.io/socket.io.js"></script>
     <script>
+        var plantConnected = false;
         var socket=io();
         // make connection with server from user side
         socket.on('connect', function(){
             console.log('Connected to Server')
         });
 
+        socket.on('plantConnected',()=>{
+            document.getElementById("disconnected").remove();
+
+        })
+      
         socket.on('plantDataWeb', function(data){
             document.getElementById("luz").innerHTML = data.light;
             document.getElementById("temp").innerHTML = data.temperature;

@@ -1,0 +1,50 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+main{
+    display: flex;
+    padding:15px;
+    justify-content: center;
+    border: 3px solid red;
+    height: auto;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+
+.plantdata{
+    width:100%;
+    border:3px solid green; 
+    max-width:902px;
+    display: flex;
+    flex-wrap: wrap;
+    flex:1;
+    justify-content: center;
+    align-items: start;
+}
+
+.property{
+    min-width:380px;
+    border:2px solid yellow;
+    height:200px;
+}
+
+img{
+    width:105px;
+    height:105px;
+}
+
+.property{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.data, .label{
+    margin-left:20px;
+}
+
+
